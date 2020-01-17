@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+	<title>Ben | D'mello | Artist</title>
+	<link href="https://fonts.googleapis.com/css?family=Amatic+SC:400,700|Cabin+Sketch:400,700" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body>
+  <div id="root"></div>
+</body>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="benButtons.js"></script>
+<script>
+	var Projects = function(num, name, price) {
+		this.num = num;
+		this.name = name;
+		this.price = price;
+	}
+
+	Projects.prototype.displayProject = function() {
+		var html = '<div class="photo project%num%"><div class="photo-overlay"><h3>%name%</h3><p>Price: $%price%</p></div></div>';
+		
+		var newHTML = html.replace('%num%', this.num);
+		newHTML = newHTML.replace('%name%', this.name);
+		newHTML = newHTML.replace('%price%', this.price);
+
+		document.querySelector('.gallery').insertAdjacentHTML('beforeend', newHTML);
+	}
+
+	var project1 = new Projects(1, 'Jack Nicholson 9x11', '100');
+	var project2 = new Projects(2, 'Hugh Laurie 9x11', '25');
+	var project3 = new Projects(3, 'Walter White 9x11', '100');
+	var project4 = new Projects(4, 'Robert Downey Jr. 9x11', '25');
+	var project5 = new Projects(5, 'Kevin Spacey', 'WIP');
+	var project6 = new Projects(6, 'Customized Couple Portraits', '30');
+
+	project1.displayProject();
+	project2.displayProject();
+	project3.displayProject();
+	project4.displayProject();
+	project5.displayProject();
+	project6.displayProject();
+
+	function burger() {
+		document.querySelector('.main-nav').classList.toggle('responsive');
+		if(document.querySelector('.main-nav').className === 'main-nav') {
+			document.querySelector('.icon').innerHTML = '&#9776';
+		} else {
+			document.querySelector('.icon').textContent = 'X';
+		}
+	}
+
+</script>
+</html>
